@@ -1,0 +1,12 @@
+# Eclipse & Build Output
+bin/
+build/
+.metadata/
+*.class
+
+# Operating System
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log

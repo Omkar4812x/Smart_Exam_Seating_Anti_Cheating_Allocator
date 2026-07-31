@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
+         version="6.0">
+
+    <display-name>Smart Exam Seating Allocator</display-name>
+    <description>Anti-Cheating Exam Seating Allocation System</description>
+
+    <!-- Welcome File -->
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+
+    <!-- ==================== FILTERS ==================== -->
+
+    <filter>
+        <filter-name>AuthFilter</filter-name>
+        <filter-class>com.examseating.filter.AuthFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>AuthFilter</filter-name>
+        <url-pattern>/admin/*</url-pattern>
+    </filter-mapping>
+
+    <!-- ==================== SERVLETS ==================== -->
+
+    <!-- Login Servlet -->
+    <servlet>
+        <servlet-name>LoginServlet</servlet-name>
+        <servlet-class>com.examseating.servlet.LoginServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LoginServlet</servlet-name>
+        <url-pattern>/login</url-pattern>
+    </servlet-mapping>
+
+    <!-- Logout Servlet -->
+    <servlet>
+        <servlet-name>LogoutServlet</servlet-name>
+        <servlet-class>com.examseating.servlet.LogoutServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LogoutServlet</servlet-name>
+        <url-pattern>/logout</url-pattern>
+    </servlet-mapping>
+
+    <!-- Admin Dashboard Servlet -->
+    <servlet>
+        <servlet-name>DashboardServlet</servlet-name>
+        <servlet-class>com.examseating.servlet.DashboardServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DashboardServlet</servlet-name>
+        <url-pattern>/admin/dashboard</url-pattern>
+    </servlet-mapping>
+
+    <!-- Add Room Servlet -->
+    <servlet>
+        <servlet-name>AddRoomServlet</servlet-name>
+        <servlet-class>com.examseating.servlet.AddRoomServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AddRoomServlet</servlet-name>
+        <url-pattern>/admin/rooms</url-pattern>
+    </servlet-mapping>
+
+    <!-- Create Exam Servlet -->
+    <servlet>
+        <servlet-name>CreateExamServlet</servlet-name>
+        <servlet-class>com.examseating.servlet.CreateExamServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CreateExamServlet</servlet-name>
+        <url-pattern>/admin/exams</url-pattern>
+    </servlet-mapping>
+
+    <!-- Upload Students Servlet -->
+    <servlet>
+        <servlet-name>UploadStudentsServlet</servlet-name>
+        <servlet-class>com.examseating.servlet.UploadStudentsServlet</servlet-class>
+        <multipart-config>
+            <max-file-size>5242880</max-file-size>
+            <max-request-size>10485760</max-request-size>
+            <file-size-threshold>0</file-size-threshold>
+        </multipart-config>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UploadStudentsServlet</servlet-name>
+        <url-pattern>/admin/students</url-pattern>
+    </servlet-mapping>
+
+    <!-- Allocate Seats Servlet -->
+    <servlet>
+        <servlet-name>AllocateSeatsServlet</servlet-name>
+        <servlet-class>com.examseating.servlet.AllocateSeatsServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AllocateSeatsServlet</servlet-name>
+        <url-pattern>/admin/allocate</url-pattern>
+    </servlet-mapping>
+
+    <!-- View Seating Chart Servlet -->
+    <servlet>
+        <servlet-name>ViewSeatingChartServlet</servlet-name>
+        <servlet-class>com.examseating.servlet.ViewSeatingChartServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ViewSeatingChartServlet</servlet-name>
+        <url-pattern>/admin/seating-chart</url-pattern>
+    </servlet-mapping>
+
+    <!-- Assign Invigilators Servlet -->
+    <servlet>
+        <servlet-name>AssignInvigilatorsServlet</servlet-name>
+        <servlet-class>com.examseating.servlet.AssignInvigilatorsServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AssignInvigilatorsServlet</servlet-name>
+        <url-pattern>/admin/invigilators</url-pattern>
+    </servlet-mapping>
+
+    <!-- Student Lookup Servlet (public) -->
+    <servlet>
+        <servlet-name>StudentLookupServlet</servlet-name>
+        <servlet-class>com.examseating.servlet.StudentLookupServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>StudentLookupServlet</servlet-name>
+        <url-pattern>/student-lookup</url-pattern>
+    </servlet-mapping>
+
+    <!-- Session Timeout (30 minutes) -->
+    <session-config>
+        <session-timeout>30</session-timeout>
+    </session-config>
+
+</web-app>
